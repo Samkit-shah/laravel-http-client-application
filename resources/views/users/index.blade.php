@@ -38,6 +38,10 @@
                                         <a class="btn btn-sm btn-primary"
                                             href="{{ route('users.show', $user->id) }}">Show</a>
                                     </td>
+                                     <td>
+                                         <a class="btn btn-sm btn-danger"
+                                             href="{{ route('users.destroy', $user->id) }}">Remove</a>
+                                     </td>
                                 </tr>
                                 @endforeach
                             </tbody>
