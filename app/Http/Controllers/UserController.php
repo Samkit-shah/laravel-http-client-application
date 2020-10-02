@@ -12,10 +12,9 @@ class UserController extends Controller {
     *
     * @return \Illuminate\Http\Response
     */
-
     public function index() {
         //
-        $page = request( 'page' );
+        $page = request('page');
 
         $response = Http::get( 'https://reqres.in/api/users?page=' . $page );
 
@@ -32,7 +31,7 @@ class UserController extends Controller {
 
     public function create() {
         //
-        return view( 'users.create' );
+        return view('users.create');
     }
 
     /**
@@ -42,7 +41,7 @@ class UserController extends Controller {
     * @return \Illuminate\Http\Response
     */
 
-    public function store( Request $request ) {
+    public function store(Request $request) {
         //
         $this->validate( $request, [
             'first_name' => 'required|string',
@@ -50,7 +49,7 @@ class UserController extends Controller {
             'email' => 'required|email',
         ] );
 
-        $response = Http::post( 'https://reqres.in/api/users', [
+        $response = Http::post('https://reqres.in/api/users', [
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'email' => $request->email,
@@ -71,7 +70,7 @@ class UserController extends Controller {
     * @return \Illuminate\Http\Response
     */
 
-    public function show( $id ) {
+    public function show($id) {
         //
         $response = Http::get( 'https://reqres.in/api/users/' . $id );
 
@@ -87,8 +86,8 @@ class UserController extends Controller {
     * @return \Illuminate\Http\Response
     */
 
-    public function edit( $id ) {
-        echo $id;
+    public function edit($id) {
+       //
     }
 
     /**
@@ -99,7 +98,7 @@ class UserController extends Controller {
     * @return \Illuminate\Http\Response
     */
 
-    public function update( Request $request, $id ) {
+    public function update(Request $request,$id) {
         //
     }
 
