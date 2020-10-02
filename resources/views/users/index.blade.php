@@ -39,8 +39,11 @@
                                             href="{{ route('users.show', $user->id) }}">Show</a>
                                     </td>
                                      <td>
-                                         <a class="btn btn-sm btn-danger"
-                                             href="{{ route('users.destroy', $user->id) }}">Remove</a>
+                                         <form action="{{ route('users.destroy', $user->id)}}" method="POST">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button class="btn btn-sm btn-danger" >Remove</button>
+                                        </form>
                                      </td>
                                 </tr>
                                 @endforeach

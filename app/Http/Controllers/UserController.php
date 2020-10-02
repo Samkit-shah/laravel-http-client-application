@@ -88,7 +88,7 @@ class UserController extends Controller {
     */
 
     public function edit( $id ) {
-        //
+        echo $id;
     }
 
     /**
@@ -110,20 +110,18 @@ class UserController extends Controller {
     * @return \Illuminate\Http\Response
     */
 
-    public function destroy( Request $req, $id ) {
+    public function destroy($id){
         $UserToBeDeleted = Http::get( 'https://reqres.in/api/users/' . $id );
-
-        if ( $UserToBeDeleted == '{}' ) {
+        if($UserToBeDeleted =='{}'){
             return redirect()->back()->with( 'success', ' No User Found' );
-        } else {
+        } else{
             $userdeleted = Http::delete( 'https://reqres.in/api/users/' . $id );
             $status = $userdeleted->status();
             if ( $status == 204 ) {
                 return redirect()->back()->with( 'success', ' User Deleted' );
-            } else {
+            }else{
                 return redirect()->back()->with( 'success', 'There was an error please try again' );
             }
         }
-
     }
 }
